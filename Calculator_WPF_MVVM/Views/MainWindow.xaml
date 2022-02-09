@@ -1,0 +1,57 @@
+﻿<Window x:Class="Calculator_WPF_MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator_WPF_MVVM"
+        xmlns:vm="clr-namespace:Calculator_WPF_MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="400">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="DigitButtonStyle">
+            <Setter Property="Button.Margin" Value="3"/>
+            <Setter Property="Button.Padding" Value="5"/>
+            <Setter Property="Button.Background" Value="#FF484848"/>
+            <Setter Property="Button.Foreground" Value="#FFF0F0F0"/>
+            <Setter Property="Button.FontSize" Value="20"/>
+            <Setter Property="Button.BorderThickness" Value="5"/>
+            <Setter Property="Button.BorderBrush" Value="#FF828282"/>
+        </Style>
+        <Style x:Key="OperationButtonStyle" BasedOn="{StaticResource DigitButtonStyle}">
+            <Setter Property="Button.Background" Value="#FF2F2F2F"/>
+            <Setter Property="Button.FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF2C2C2C">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Margin="3" Padding="5" Text="{Binding Path=Display}" Height="Auto" FontSize="40" HorizontalContentAlignment="Right" BorderThickness="2" BorderBrush="#FF707992" IsReadOnly="True"/>
+        <UniformGrid Grid.Row="1" Rows="4" Columns="5">
+            <Button Content="7" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="7" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="8" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="8" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="9" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="9" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="DEL" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="DEL" Style="{StaticResource OperationButtonStyle}"/>
+            <Button Content="C" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="C" Style="{StaticResource OperationButtonStyle}" Background="#FFFF9246" BorderBrush="#FFFAB586"/>
+            <Button Content="4" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="4" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="5" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="5" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="6" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="6" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="√х" Command="{Binding Path=SingularOperationButtonPressCommand}" CommandParameter="x^-2" Style="{StaticResource OperationButtonStyle}"/>
+            <Button Content="х²" Command="{Binding Path=SingularOperationButtonPressCommand}" CommandParameter="x^2" Style="{StaticResource OperationButtonStyle}"/>
+            <Button Content="1" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="1" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="2" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="2" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="3" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="3" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="-" Command="{Binding Path=OperationButtonPressCommand}" CommandParameter="-" Style="{StaticResource OperationButtonStyle}"/>
+            <Button Content="÷" Command="{Binding Path=OperationButtonPressCommand}" CommandParameter="/" Style="{StaticResource OperationButtonStyle}"/>
+            <Button Content="0" Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="0" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="." Command="{Binding Path=SymbolButtonPressCommand}" CommandParameter="." Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="=" Command="{Binding Path=OperationButtonPressCommand}" CommandParameter="=" Style="{StaticResource DigitButtonStyle}"/>
+            <Button Content="+" Command="{Binding Path=OperationButtonPressCommand}" CommandParameter="+" Style="{StaticResource OperationButtonStyle}"/>
+            <Button Content="×" Command="{Binding Path=OperationButtonPressCommand}" CommandParameter="*" Style="{StaticResource OperationButtonStyle}"/>
+        </UniformGrid>
+    </Grid>
+</Window>
