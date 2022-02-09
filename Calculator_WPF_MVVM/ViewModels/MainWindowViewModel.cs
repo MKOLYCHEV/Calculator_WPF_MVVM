@@ -145,7 +145,7 @@ namespace Calculator_WPF_MVVM.ViewModels
         }
         public bool CanOperationButtonPressCommandExecuted(object operation)
         {
-            if ((string)operation == "/" && Display == "0")
+            if (lastOperation == "/" && (string)operation == "=" && Display == "0")
             {
                 return false;
             }
