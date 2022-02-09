@@ -175,6 +175,10 @@ namespace Calculator_WPF_MVVM.ViewModels
         }
         public bool CanSingularOperationButtonPressCommandExecuted(object operation)
         {
+            if(Display == "-") //Без этого условия появлялось исключение, когда стираешь цифры и остается один знак "-".
+            {
+                return false;
+            }
             if ((string)operation == "x^-2" && Convert.ToDouble(Display) < Convert.ToDouble(0))
             {
                 return false;
