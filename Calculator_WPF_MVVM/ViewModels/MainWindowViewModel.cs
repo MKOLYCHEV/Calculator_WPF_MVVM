@@ -145,7 +145,7 @@ namespace Calculator_WPF_MVVM.ViewModels
         }
         public bool CanOperationButtonPressCommandExecuted(object operation)
         {
-            if (lastOperation == "/" && (string)operation == "=" && Display == "0")
+            if (lastOperation == "/" && (string)operation == "=" && Convert.ToDouble(Display) == Convert.ToDouble(0)) //Тут такая заморочка с конвертицией потому что, если у нуля в знаменателе будет запятая, то string будет разрешать деление.
             {
                 return false;
             }
