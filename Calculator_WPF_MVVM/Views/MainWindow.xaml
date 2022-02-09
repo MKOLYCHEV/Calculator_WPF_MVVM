@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Calculator_WPF_MVVM"
         xmlns:vm="clr-namespace:Calculator_WPF_MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="400">
+        Title="Калькулятор" Height="500" Width="400">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
